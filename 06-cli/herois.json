@@ -1,17 +1,1 @@
-[
-  {
-    "id": 1,
-    "nome": "Flash",
-    "poder": "speed"
-  },
-  {
-    "nome": "Batman",
-    "poder": "ricão",
-    "id": 2
-  },
-  {
-    "id": 1,
-    "nome": "Flash",
-    "poder": "speed"
-  }
-]
+{"objetoAtualizar":{"nome":"Oiiii","poder":"Naosei","id":1602533135730}}

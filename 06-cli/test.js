@@ -1,9 +1,6 @@
-const { deepStrictEqual, ok } = require('assert');
-
+const { deepEqual, ok } = require('assert');
 const Database = require('./database');
-
 const DEFAULT_ITEM_CADASTRAR = { nome: 'Flash', poder: 'speed', id: 1 };
-
 const DEFAULT_ITEM_ATUALIZAR = {
   nome: 'Lanterna Verde',
   poder: 'Anel do poder',
@@ -22,13 +19,13 @@ describe('Suite de manipulação de herois', () => {
     await Database.cadastrar(DEFAULT_ITEM_CADASTRAR);
 
     const [realResult] = await Database.listar(expected.id);
-    deepStrictEqual(realResult, expected);
+    deepEqual(realResult, expected);
   });
 
   it('deve listar um heroi pelo id', async () => {
     const expected = DEFAULT_ITEM_CADASTRAR;
     const result = await Database.listar(1);
-    deepStrictEqual(result[0], expected);
+    deepEqual(result[0], expected);
   });
 
   it('deve atualizar um heroi pelo id', async () => {
@@ -37,13 +34,12 @@ describe('Suite de manipulação de herois', () => {
       nome: 'Batman',
       poder: 'ricão',
     };
-    
     await Database.atualizar(expected.id, {
       nome: expected.nome,
       poder: expected.poder,
     });
 
     const [realResult] = await Database.listar(expected.id);
-    deepStrictEqual(realResult, expected);
+    deepEqual(realResult, expected);
   });
 });
