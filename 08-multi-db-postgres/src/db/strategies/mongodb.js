@@ -2,11 +2,11 @@ const ICrud = require('./interfaces/interfaceCrud');
 
 class MongoDB extends ICrud {
   constructor() {
-    super()
+    super();
   }
 
   create(item) {
-    console.log('O item foi salvo em MongoDB')
+    console.log('O item foi salvo em MongoDB');
   }
 }
 

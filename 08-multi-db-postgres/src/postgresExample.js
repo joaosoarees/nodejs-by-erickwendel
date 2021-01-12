@@ -10,7 +10,7 @@ const driver = new Sequelize(
     host: 'localhost',
     dialect: 'postgres',
     quoteIdentifiers: false,
-  }
+  },
 );
 
 async function main() {
@@ -27,24 +27,24 @@ async function main() {
     },
     poder: {
       type: Sequelize.STRING,
-      required: true
-    }
+      required: true,
+    },
   }, {
     tableName: 'TB_HEROIS',
     freezeTableName: false,
-    timestamps: false
-  })
+    timestamps: false,
+  });
 
-  await Herois.sync()
+  await Herois.sync();
   // await Herois.create({
   //   nome: 'Lanterna Verde',
   //   poder: 'Anel'
   // })
 
-  const result = await Herois.findAll({ 
-    raw: true, attributes: ['nome']
-  })
-  console.log('result', result)
+  const result = await Herois.findAll({
+    raw: true, attributes: ['nome'],
+  });
+  console.log('result', result);
 }
 
-main()
+main();

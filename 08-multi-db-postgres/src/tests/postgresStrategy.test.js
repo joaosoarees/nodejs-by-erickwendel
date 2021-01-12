@@ -10,7 +10,9 @@ const MOCK_HEROI_ATUALIZAR = { nome: 'Batman', poder: 'Dinheiro' };
 describe('Postgres Strategy', () => {
   it('PostgresSQL Connection', async () => {
     await context.connect();
+    await context.delete();
     await context.create(MOCK_HEROI_ATUALIZAR);
+
     const result = await context.isConnected();
     assert.deepStrictEqual(result, true);
   });
@@ -45,5 +47,11 @@ describe('Postgres Strategy', () => {
 
     assert.deepStrictEqual(result, 1);
     assert.deepStrictEqual(itemUpdated.nome, newItem.nome);
+  });
+
+  it('Remover por id', async () => {
+    const [item] = await context.read({});
+    const result = await context.delete(item.id);
+    assert.deepStrictEqual(result, 1);
   });
 });

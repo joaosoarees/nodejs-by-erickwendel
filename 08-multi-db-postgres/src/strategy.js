@@ -1,8 +1,8 @@
 class NotImplementedException extends Error {
   constructor() {
-    super("Not Implemented Exception");
-  };
-};
+    super('Not Implemented Exception');
+  }
+}
 
 class ICrud {
   create(item) {
@@ -14,31 +14,31 @@ class ICrud {
   }
 
   update(id, item) {
-    throw new NotImplementedException(); 
+    throw new NotImplementedException();
   }
 
   delete(id) {
     throw new NotImplementedException();
   }
-};
+}
 
 class MongoDB extends ICrud {
   constructor() {
-    super()
+    super();
   }
 
   create(item) {
-    console.log('O item foi salvo em MongoDB')
+    console.log('O item foi salvo em MongoDB');
   }
 }
 
 class Postgres extends ICrud {
   constructor() {
-    super()
+    super();
   }
 
   create(item) {
-    console.log('O item foi salvo em Postgres')
+    console.log('O item foi salvo em Postgres');
   }
 }
 
@@ -52,15 +52,15 @@ class ContextStrategy {
   }
 
   read(item) {
-    return this._database.read(item)
+    return this._database.read(item);
   }
 
   update(id, item) {
-    return this._database.update(id, item)
+    return this._database.update(id, item);
   }
 
   delete(id) {
-    return this._database.delete(id)
+    return this._database.delete(id);
   }
 }
 
@@ -70,4 +70,4 @@ contextMongo.create();
 const contextPostgres = new ContextStrategy(new Postgres());
 contextPostgres.create();
 
-contextMongo.read()
+contextMongo.read();
