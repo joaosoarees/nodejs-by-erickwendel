@@ -1,5 +1,4 @@
-// npm install sequelize
-// npm install pg-hstore pg
+// npm install sequelize pg-hstore pg
 
 const Sequelize = require('sequelize');
 
