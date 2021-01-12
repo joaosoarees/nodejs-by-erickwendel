@@ -1,20 +1,20 @@
-const ICrud = require('./interfaces/interfaceCrud');
 const Sequelize = require('sequelize');
+const ICrud = require('./interfaces/interfaceCrud');
 
 class Postgres extends ICrud {
   constructor() {
-    super()
-    this._driver = null
-    this._herois = null
+    super();
+    this._driver = null;
+    this._herois = null;
   }
 
   async isConnected() {
     try {
-      await this._driver.authenticate()
-      return true
-    } catch(error) {
-      console.log('fail', error)
-      return false
+      await this._driver.authenticate();
+      return true;
+    } catch (error) {
+      console.log('fail', error);
+      return false;
     }
   }
 
@@ -32,26 +32,30 @@ class Postgres extends ICrud {
       },
       poder: {
         type: Sequelize.STRING,
-        required: true
-      }
+        required: true,
+      },
     }, {
       tableName: 'TB_HEROIS',
       freezeTableName: false,
-      timestamps: false
-    })
-  
-    await this._herois.sync()
+      timestamps: false,
+    });
+
+    await this._herois.sync();
   }
 
   async create(item) {
-    const { dataValues } = await this._herois.create(item)
+    const { dataValues } = await this._herois.create(item);
 
-    return dataValues
+    return dataValues;
   }
 
   async read(item = {}) {
-    return this._herois.findAll({ where: item, raw: true })
-  } 
+    return this._herois.findAll({ where: item, raw: true });
+  }
+
+  async update(id, item) {
+    return this._herois.update(item, { where: { id } });
+  }
 
   async connect() {
     this._driver = new Sequelize(
@@ -62,9 +66,9 @@ class Postgres extends ICrud {
         host: 'localhost',
         dialect: 'postgres',
         quoteIdentifiers: false,
-      }
+      },
     );
-    await this.defineModel()
+    await this.defineModel();
   }
 }
 
