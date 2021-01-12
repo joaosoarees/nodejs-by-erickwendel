@@ -4,13 +4,12 @@ const Sequelize = require('sequelize');
 
 const driver = new Sequelize(
   'heroes',
-  'joao',
-  '6550',
+  'root',
+  'root',
   {
     host: 'localhost',
     dialect: 'postgres',
     quoteIdentifiers: false,
-    operatorsAliases: false
   }
 );
 
