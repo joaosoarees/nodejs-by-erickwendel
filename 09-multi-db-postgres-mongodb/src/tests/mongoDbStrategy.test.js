@@ -60,4 +60,10 @@ describe('MongoDB Strategy', function () {
 
     assert.deepStrictEqual(result.nModified, 1);
   });
+
+  it('remover', async () => {
+    const result = await context.delete(MOCK_HEROI_ID);
+
+    assert.deepStrictEqual(result.n, 1);
+  });
 });
