@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mocha": "npx mocha src/tests *test.js  --watch"
+    "mocha": "npx mocha src/tests *test.js"
   },
   "keywords": [],
   "author": "",

@@ -6,16 +6,27 @@ const Context = require('../db/strategies/base/contextStrategy');
 
 const context = new Context(new MongoDB());
 
-describe('MongoDB Suite de Testes', function () {
+const MOCK_HEROI_CADASTRAR = {
+  nome: 'Flash',
+  poder: 'Velocidade',
+};
+
+describe('MongoDB Strategy', function () {
   this.beforeAll(async () => {
     await context.connect();
   });
 
-  it.only('Verificar conexão', async () => {
+  it('Verificar conexão', async () => {
     const result = await context.isConnected();
 
     const expected = 'Conectado';
 
     assert.deepStrictEqual(result, expected);
+  });
+
+  it('cadastrar', async () => {
+    const { nome, poder } = await context.create(MOCK_HEROI_CADASTRAR);
+
+    assert.deepStrictEqual({ nome, poder }, MOCK_HEROI_CADASTRAR);
   });
 });
