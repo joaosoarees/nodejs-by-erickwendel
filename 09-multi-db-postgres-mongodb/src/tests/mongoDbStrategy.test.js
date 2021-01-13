@@ -11,9 +11,15 @@ const MOCK_HEROI_CADASTRAR = {
   poder: 'Velocidade',
 };
 
+const MOCK_HEROI_DEFAULT = {
+  nome: `Thanos-${Date.now()}`,
+  poder: 'Jóias',
+};
+
 describe('MongoDB Strategy', function () {
   this.beforeAll(async () => {
     await context.connect();
+    await context.create(MOCK_HEROI_DEFAULT);
   });
 
   it('Verificar conexão', async () => {
@@ -28,5 +34,12 @@ describe('MongoDB Strategy', function () {
     const { nome, poder } = await context.create(MOCK_HEROI_CADASTRAR);
 
     assert.deepStrictEqual({ nome, poder }, MOCK_HEROI_CADASTRAR);
+  });
+
+  it('listar', async () => {
+    const [{ nome, poder }] = await context.read({ nome: MOCK_HEROI_DEFAULT.nome });
+    const result = { nome, poder };
+
+    assert.deepStrictEqual(result, MOCK_HEROI_DEFAULT);
   });
 });
