@@ -1,11 +1,14 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable max-classes-per-file */
+/* eslint-disable no-unused-vars */
 class NotImplementedException extends Error {
   constructor() {
-    super("Not Implemented Exception");
-  };
-};
+    super('Not Implemented Exception');
+  }
+}
 
 class ICrud {
-  create(item) {
+  create() {
     throw new NotImplementedException();
   }
 
@@ -14,7 +17,7 @@ class ICrud {
   }
 
   update(id, item) {
-    throw new NotImplementedException(); 
+    throw new NotImplementedException();
   }
 
   delete(id) {
@@ -24,6 +27,10 @@ class ICrud {
   isConnected() {
     throw new NotImplementedException();
   }
-};
+
+  connect() {
+    throw new NotImplementedException();
+  }
+}
 
 module.exports = ICrud;
